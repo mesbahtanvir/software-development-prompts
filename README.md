@@ -70,6 +70,10 @@ These prompts are designed to be:
 
 - **[Google Cloud Best Practices](prompts/google-cloud-best-practices.md)** - Analyze and optimize GCP deployments. Covers IAM, cost optimization, compute services, databases, monitoring, and security.
 
+### 🔄 DevOps & CI/CD
+
+- **[CI/CD Workflows for Full-Stack Applications](prompts/cicd-workflows.md)** - Set up automated build, test, and deployment pipelines. Covers GitHub Actions, GitLab CI, deployment strategies (blue-green, canary), rollback mechanisms, environment management, and monitoring for full-stack applications.
+
 ## How to Use
 
 1. **Choose a prompt** that matches your task
@@ -129,6 +133,13 @@ In the era of AI code generation, these prompts are **MORE relevant than ever**:
 3. Check [Security Best Practices](prompts/security-best-practices.md) for vulnerabilities
 4. Verify [Test Improvement Guide](prompts/test-improvement-guide.md) for test quality
 
+#### Example 5: Setting Up Production-Ready CI/CD
+
+1. Use [Project Bootstrapping Guide](prompts/project-bootstrapping-guide.md) to set up project structure
+2. Apply [CI/CD Workflows](prompts/cicd-workflows.md) to automate testing and deployment
+3. Follow [Security Best Practices](prompts/security-best-practices.md) for vulnerability scanning
+4. Use [Test Improvement Guide](prompts/test-improvement-guide.md) to ensure comprehensive test coverage in pipeline
+
 ## Quick Reference Guide
 
 | Your Situation | Recommended Prompt |
@@ -146,6 +157,7 @@ In the era of AI code generation, these prompts are **MORE relevant than ever**:
 | Reviewing Go code | [Golang Best Practices](prompts/golang-best-practices.md) |
 | Auditing Firebase integration | [Firebase Integration Best Practices](prompts/firebase-integration-best-practices.md) |
 | Optimizing Google Cloud deployment | [Google Cloud Best Practices](prompts/google-cloud-best-practices.md) |
+| Setting up CI/CD pipeline | [CI/CD Workflows](prompts/cicd-workflows.md) |
 
 ## Learning Path
 
@@ -161,7 +173,8 @@ In the era of AI code generation, these prompts are **MORE relevant than ever**:
 1. **[API Design Principles](prompts/api-design-principles.md)** - Build interfaces others will use
 2. **[Security Best Practices](prompts/security-best-practices.md)** - Protect your users
 3. **[Performance Optimization](prompts/performance-optimization.md)** - Make it fast
-4. **[Next.js Best Practices](prompts/nextjs-best-practices.md)** or **[Golang Best Practices](prompts/golang-best-practices.md)** - Master your framework
+4. **[CI/CD Workflows](prompts/cicd-workflows.md)** - Automate your deployments
+5. **[Next.js Best Practices](prompts/nextjs-best-practices.md)** or **[Golang Best Practices](prompts/golang-best-practices.md)** - Master your framework
 
 ### For Advanced Developers
 
@@ -190,7 +203,7 @@ Have a great reusable prompt? Contributions are welcome! We'd love to expand thi
 
 We're particularly interested in prompts for:
 
-- **Development Practices**: CI/CD, Git workflows, microservices, event-driven architecture
+- **Development Practices**: Git workflows, microservices, event-driven architecture, pair programming
 - **Languages & Frameworks**: Python, TypeScript, React, Vue.js, Django, Spring Boot
 - **Infrastructure**: Docker, Kubernetes, AWS, Azure, Terraform
 - **Data & Backend**: PostgreSQL, MongoDB, GraphQL, message queues
