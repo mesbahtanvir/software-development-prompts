@@ -74,6 +74,8 @@ These prompts are designed to be:
 
 - **[Claude Code Skills Setup](prompts/claude-code-skills-setup.md)** - Create custom Claude Code skills for your codebase. Includes role-based skills (reviewer, tester, architect, security auditor), skill templates for all major languages/frameworks, and implementation guides. Automates repetitive tasks and codifies team best practices.
 
+- **[Prompt Engineering Refinement](prompts/prompt-engineering-refinement.md)** - Analyze and optimize AI prompts for clarity, effectiveness, and consistent results. Covers the 5 core elements of prompts, common problems, refinement process, quality metrics, and advanced techniques. Includes templates for code review, bug analysis, and feature implementation prompts.
+
 ### ☁️ Cloud & Infrastructure
 
 - **[Firebase Integration Best Practices](prompts/firebase-integration-best-practices.md)** - Audit and optimize Firebase implementations. Covers security rules, Firestore optimization, authentication, Cloud Functions, and cost reduction.
@@ -176,6 +178,15 @@ In the era of AI code generation, these prompts are **MORE relevant than ever**:
 5. Document skills for team adoption
 6. Measure productivity improvements and iterate
 
+#### Example 9: Improving AI Prompts
+
+1. Use [Prompt Engineering Refinement](prompts/prompt-engineering-refinement.md) to analyze your existing prompts
+2. Rate prompts on the 7 quality dimensions
+3. Identify vague instructions, missing context, or unclear output formats
+4. Apply refinement techniques (add examples, specify constraints, improve structure)
+5. Test refined prompts and measure consistency
+6. Create reusable prompt templates for your team
+
 ## Quick Reference Guide
 
 | Your Situation | Recommended Prompt |
@@ -194,6 +205,7 @@ In the era of AI code generation, these prompts are **MORE relevant than ever**:
 | Optimizing Next.js application | [Next.js Best Practices](prompts/nextjs-best-practices.md) |
 | Reviewing Go code | [Golang Best Practices](prompts/golang-best-practices.md) |
 | Need custom Claude Code commands | [Claude Code Skills Setup](prompts/claude-code-skills-setup.md) |
+| AI prompts producing unclear results | [Prompt Engineering Refinement](prompts/prompt-engineering-refinement.md) |
 | Auditing Firebase integration | [Firebase Integration Best Practices](prompts/firebase-integration-best-practices.md) |
 | Optimizing Google Cloud deployment | [Google Cloud Best Practices](prompts/google-cloud-best-practices.md) |
 | Setting up CI/CD pipeline | [CI/CD Workflows](prompts/cicd-workflows.md) |
