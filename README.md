@@ -294,8 +294,9 @@ Auto-generated summary of all prompts in this repository.
 | [Startup Due Diligence](prompts/startup-due-diligence.md) | 354 | 1390 | 1950 | 7.6 KB |
 | [Test Driven Development](prompts/test-driven-development.md) | 885 | 3089 | 5326 | 20.8 KB |
 | [Test Improvement Guide](prompts/test-improvement-guide.md) | 788 | 2807 | 5140 | 20.0 KB |
+| [Webapp Development Workflow](prompts/webapp-development-workflow.md) | 360 | 1195 | 2107 | 8.2 KB |
 | [Webapp Fullstack Setup](prompts/webapp-fullstack-setup.md) | 1314 | 3786 | 8232 | 32.1 KB |
-| **Total** | **17197** | **55864** | **105953** | **413.8 KB** |
+| **Total** | **17557** | **57059** | **108060** | **422.0 KB** |
 
 *Token count is estimated based on ~4 characters per token.*
 
