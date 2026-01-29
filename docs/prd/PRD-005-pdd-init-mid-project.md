@@ -1,6 +1,6 @@
 # PRD-005: Enhanced pdd-init for Mid-Project Adoption
 
-**Status:** In Progress
+**Status:** Done
 **Created:** 2026-01-29
 
 ---
@@ -34,13 +34,13 @@ Enhance `/pdd-init` to automatically analyze the existing project and generate a
 
 ## Acceptance Criteria
 
-- [ ] AC1: When `/pdd-init` runs on a project with a README.md, it extracts the project name and description into PRD-000
-- [ ] AC2: When `/pdd-init` runs, it detects and extracts tech stack from common project config files (e.g., package.json, pyproject.toml, Cargo.toml, go.mod, pom.xml, Gemfile, composer.json, etc.)
-- [ ] AC3: When `/pdd-init` runs on a project with existing `docs/` folder, it lists discovered documentation in PRD-000
-- [ ] AC4: The generated PRD-000-foundation.md includes sections: Problem Statement, Current Features, Tech Stack, and Status (marked as "Done")
-- [ ] AC5: When `/pdd-init` runs on a project with NO documentation or config files, it falls back to current behavior (empty template + prompts user to create PRD manually)
-- [ ] AC6: Running `/pdd-init` on an already-initialized project (existing `docs/prd/`) does NOT overwrite existing PRDs
-- [ ] AC7: The analysis is language/framework agnostic — works for any project type
+- [x] AC1: When `/pdd-init` runs on a project with a README.md, it extracts the project name and description into PRD-000
+- [x] AC2: When `/pdd-init` runs, it detects and extracts tech stack from common project config files (e.g., package.json, pyproject.toml, Cargo.toml, go.mod, pom.xml, Gemfile, composer.json, etc.)
+- [x] AC3: When `/pdd-init` runs on a project with existing `docs/` folder, it lists discovered documentation in PRD-000
+- [x] AC4: The generated PRD-000-foundation.md includes sections: Problem Statement, Current Features, Tech Stack, and Status (marked as "Done")
+- [x] AC5: When `/pdd-init` runs on a project with NO documentation or config files, it falls back to current behavior (empty template + prompts user to create PRD manually)
+- [x] AC6: Running `/pdd-init` on an already-initialized project (existing `docs/prd/`) does NOT overwrite existing PRDs
+- [x] AC7: The analysis is language/framework agnostic — works for any project type
 
 ## Out of Scope
 
@@ -63,3 +63,4 @@ Enhance `/pdd-init` to automatically analyze the existing project and generate a
 | Date | Change |
 |------|--------|
 | 2026-01-29 | PRD created |
+| 2026-01-29 | Implementation complete, all ACs verified |
