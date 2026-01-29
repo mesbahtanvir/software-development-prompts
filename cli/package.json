@@ -7,7 +7,8 @@
     "pdd-dev": "./bin/pdd.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint bin/ lib/ --max-warnings 0"
   },
   "keywords": [
     "prd",
@@ -36,7 +37,7 @@
     "lib/",
     "commands/"
   ],
-  "dependencies": {
-    "prd-driven-dev": "^1.0.0"
+  "devDependencies": {
+    "eslint": "^8.57.0"
   }
 }

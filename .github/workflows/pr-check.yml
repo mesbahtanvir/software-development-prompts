@@ -1,0 +1,107 @@
+name: PR Validation
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate-pr:
+    name: Validate PR Conventions
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for skip-prd flag
+        id: skip-check
+        run: |
+          if [[ "${{ github.event.pull_request.title }}" == *"[skip-prd]"* ]]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+            echo "ℹ️ [skip-prd] flag detected, skipping PRD validation"
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Validate branch naming
+        if: steps.skip-check.outputs.skip != 'true'
+        run: |
+          BRANCH="${{ github.head_ref }}"
+          echo "Branch name: $BRANCH"
+
+          # Valid patterns: feat/prd-XXX-*, fix/prd-XXX-*, docs/prd-*
+          if [[ ! "$BRANCH" =~ ^(feat|fix)/prd-[0-9]{3}- ]] && [[ ! "$BRANCH" =~ ^docs/prd- ]]; then
+            echo "❌ Branch name '$BRANCH' does not follow convention"
+            echo ""
+            echo "Valid patterns:"
+            echo "  - feat/prd-XXX-description"
+            echo "  - fix/prd-XXX-description"
+            echo "  - docs/prd-description"
+            echo ""
+            echo "Use [skip-prd] in PR title to bypass this check for CI/deps/docs-only changes"
+            exit 1
+          fi
+
+          echo "✅ Branch name follows convention"
+
+      - name: Validate PR title
+        if: steps.skip-check.outputs.skip != 'true'
+        run: |
+          TITLE="${{ github.event.pull_request.title }}"
+          echo "PR title: $TITLE"
+
+          # Must contain PRD-XXX reference
+          if [[ ! "$TITLE" =~ PRD-[0-9]{3} ]]; then
+            echo "❌ PR title must contain a PRD reference (e.g., PRD-001)"
+            echo ""
+            echo "Example: feat(PRD-001): Add user authentication"
+            echo ""
+            echo "Use [skip-prd] in PR title to bypass this check for CI/deps/docs-only changes"
+            exit 1
+          fi
+
+          echo "✅ PR title contains PRD reference"
+
+      - name: Check for PRD file changes
+        if: steps.skip-check.outputs.skip != 'true'
+        run: |
+          # Get list of changed files in this PR
+          CHANGED_FILES=$(git diff --name-only origin/main...HEAD)
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+          echo ""
+
+          # Check if any PRD file was modified
+          PRD_CHANGES=$(echo "$CHANGED_FILES" | grep -E "^docs/prd/.*\.md$" || true)
+
+          if [ -z "$PRD_CHANGES" ]; then
+            echo "❌ No PRD file changes detected"
+            echo ""
+            echo "Every PR must include changes to a PRD file in docs/prd/"
+            echo "This enforces the 'No PRD, No Code' principle"
+            echo ""
+            echo "Options:"
+            echo "  1. Create or update a PRD for your changes"
+            echo "  2. Add [skip-prd] to PR title for CI/deps/docs-only changes"
+            exit 1
+          fi
+
+          # Count PRD files changed
+          PRD_COUNT=$(echo "$PRD_CHANGES" | wc -l | tr -d ' ')
+
+          if [ "$PRD_COUNT" -gt 1 ]; then
+            echo "❌ Multiple PRD files changed ($PRD_COUNT files)"
+            echo ""
+            echo "Only ONE PRD file should change per PR to keep PRs focused."
+            echo ""
+            echo "Changed PRD files:"
+            echo "$PRD_CHANGES"
+            echo ""
+            echo "Please split this into separate PRs, one per PRD."
+            exit 1
+          fi
+
+          echo "✅ PRD file changes detected (1 file):"
+          echo "$PRD_CHANGES"

@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: cli/package-lock.json
+
+      - name: Install dependencies
+        working-directory: cli
+        run: npm ci
+
+      - name: Lint JavaScript
+        working-directory: cli
+        run: npm run lint --if-present
+
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v18
+        with:
+          globs: |
+            **/*.md
+            !node_modules/**
+            !cli/node_modules/**
+
+      - name: Validate JSON
+        run: |
+          for file in cli/package.json cli/package-lock.json; do
+            if [ -f "$file" ]; then
+              echo "Validating $file..."
+              python3 -c "import json; json.load(open('$file'))" || exit 1
+            fi
+          done

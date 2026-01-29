@@ -1,0 +1,127 @@
+name: PRD Quality Check
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'docs/prd/*.md'
+
+jobs:
+  validate-prd:
+    name: Validate PRD Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get changed PRD files
+        id: changed-prds
+        run: |
+          # Get PRD files changed in this PR
+          CHANGED_PRDS=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep -E "^docs/prd/.*\.md$" || true)
+          echo "Changed PRDs: $CHANGED_PRDS"
+          echo "files=$CHANGED_PRDS" >> $GITHUB_OUTPUT
+
+      - name: Validate PRD structure
+        run: |
+          ERRORS=0
+          WARNINGS=0
+
+          for file in ${{ steps.changed-prds.outputs.files }}; do
+            if [ ! -f "$file" ]; then
+              continue
+            fi
+
+            echo "========================================="
+            echo "Checking: $file"
+            echo "========================================="
+
+            # Check for required sections
+            echo "Checking required sections..."
+
+            # Problem Statement
+            if ! grep -q "## Problem Statement\|## Problem" "$file"; then
+              echo "❌ Missing 'Problem Statement' section"
+              ERRORS=$((ERRORS + 1))
+            else
+              echo "✅ Has Problem Statement section"
+            fi
+
+            # Solution
+            if ! grep -q "## Solution" "$file"; then
+              echo "❌ Missing 'Solution' section"
+              ERRORS=$((ERRORS + 1))
+            else
+              echo "✅ Has Solution section"
+            fi
+
+            # Acceptance Criteria
+            if ! grep -q "## Acceptance Criteria" "$file"; then
+              echo "❌ Missing 'Acceptance Criteria' section"
+              ERRORS=$((ERRORS + 1))
+            else
+              echo "✅ Has Acceptance Criteria section"
+            fi
+
+            # Check status field
+            echo ""
+            echo "Checking status..."
+            STATUS=$(grep -E "^\*\*Status:\*\*" "$file" | head -1 || true)
+            if [ -z "$STATUS" ]; then
+              echo "❌ Missing Status field"
+              ERRORS=$((ERRORS + 1))
+            else
+              # Validate status value
+              if echo "$STATUS" | grep -qE "(Draft|In Progress|Done|Abandoned)"; then
+                echo "✅ Valid status: $STATUS"
+              else
+                echo "❌ Invalid status. Must be: Draft, In Progress, Done, or Abandoned"
+                echo "   Found: $STATUS"
+                ERRORS=$((ERRORS + 1))
+              fi
+            fi
+
+            # Check acceptance criteria format
+            echo ""
+            echo "Checking acceptance criteria format..."
+            AC_LINES=$(grep -E "^- \[[ x]\]" "$file" || true)
+            if [ -z "$AC_LINES" ]; then
+              echo "❌ No acceptance criteria found with checkbox format"
+              echo "   Expected format: - [ ] AC1: Description"
+              ERRORS=$((ERRORS + 1))
+            else
+              AC_COUNT=$(echo "$AC_LINES" | wc -l)
+              echo "✅ Found $AC_COUNT acceptance criteria with checkbox format"
+            fi
+
+            # Check for Out of Scope section (warning only)
+            echo ""
+            echo "Checking optional sections..."
+            if ! grep -q "## Out of Scope" "$file"; then
+              echo "⚠️ Missing 'Out of Scope' section (recommended)"
+              WARNINGS=$((WARNINGS + 1))
+            else
+              echo "✅ Has Out of Scope section"
+            fi
+
+            echo ""
+          done
+
+          echo "========================================="
+          echo "Summary: $ERRORS errors, $WARNINGS warnings"
+          echo "========================================="
+
+          if [ $ERRORS -gt 0 ]; then
+            echo ""
+            echo "❌ PRD quality check failed with $ERRORS error(s)"
+            exit 1
+          fi
+
+          if [ $WARNINGS -gt 0 ]; then
+            echo ""
+            echo "⚠️ PRD quality check passed with $WARNINGS warning(s)"
+          else
+            echo ""
+            echo "✅ PRD quality check passed"
+          fi
