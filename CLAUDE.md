@@ -32,10 +32,19 @@ prompts/
 
 > **Never push directly to main**
 
-1. Create a feature branch: `git checkout -b feat/prd-XXX-short-name`
-2. Make commits referencing the PRD
-3. Push branch and create PR to merge into main
-4. PRs should reference the PRD in description
+1. **One PR per PRD** — Each PR implements exactly one PRD
+2. **Branch naming** — `feat/prd-XXX-short-name` (must include PRD number)
+3. **PR title** — Must reference PRD: `feat(PRD-XXX): Description`
+4. Push branch and create PR to merge into main
+
+```bash
+# Example workflow for PRD-005
+git checkout -b feat/prd-005-user-export
+# ... make changes ...
+git commit -m "feat(PRD-005): Add user export functionality"
+git push -u origin feat/prd-005-user-export
+gh pr create --title "feat(PRD-005): Add user export functionality"
+```
 
 ### Creating a New PRD
 
