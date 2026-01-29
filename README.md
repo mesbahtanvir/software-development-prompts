@@ -33,6 +33,8 @@ A methodology for AI-assisted software development where every feature starts wi
 | Undocumented decisions | PRD captures context |
 | AI generates wrong thing | PRD guides AI precisely |
 
+**[Read the full explanation →](docs/WHY-PDD.md)** — Learn why PDD works for AI coding agents, who it's for, and its limitations.
+
 ## Installation
 
 Install PDD commands globally for Claude Code:
