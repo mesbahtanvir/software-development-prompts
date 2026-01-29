@@ -1,0 +1,39 @@
+{
+  "name": "pdd",
+  "version": "1.0.0",
+  "description": "PRD Driven Development - Claude Code commands for AI-assisted software development",
+  "main": "lib/index.js",
+  "bin": {
+    "pdd": "./bin/pdd.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "prd",
+    "claude",
+    "claude-code",
+    "ai",
+    "development",
+    "methodology",
+    "prompts"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mesbahtanvir/prd-driven-dev.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mesbahtanvir/prd-driven-dev/issues"
+  },
+  "homepage": "https://github.com/mesbahtanvir/prd-driven-dev#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "commands/"
+  ]
+}

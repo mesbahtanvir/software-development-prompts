@@ -1,6 +1,6 @@
 # PRD-004: Claude Code Command Integration
 
-**Status:** Draft
+**Status:** Done
 **Created:** 2026-01-29
 
 ---
