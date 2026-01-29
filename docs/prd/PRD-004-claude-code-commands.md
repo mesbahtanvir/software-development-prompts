@@ -47,10 +47,11 @@ pdd --version
 ```
 ~/.claude/
 └── commands/
+    ├── pdd-help.md         # /pdd-help — Show all PDD commands and usage
     ├── pdd-new.md          # /pdd-new [type] — Create a new PRD
     ├── pdd-init.md         # /pdd-init — Initialize PDD in current project
     ├── pdd-status.md       # /pdd-status — Show all PRDs and status
-    ├── pdd-audit.md        # /pdd-audit [type] [prd] — Run audit prompts
+    ├── pdd-update.md       # /pdd-update — Check for and install updates
     ├── pdd-features.md     # /pdd-features [prd] — Audit implementation
     ├── pdd-tests.md        # /pdd-tests [prd] — Audit test coverage
     ├── pdd-alignment.md    # /pdd-alignment — PRD vs code alignment
@@ -63,12 +64,14 @@ pdd --version
 ```bash
 # In any project, these commands are now available:
 
+/pdd-help             # Show all commands and usage
 /pdd-new feature      # Create a new feature PRD
 /pdd-new bugfix       # Create a bugfix PRD
 /pdd-init             # Set up docs/prd/ in current project
 /pdd-status           # Show PRD dashboard
 /pdd-features 005     # Audit PRD-005 implementation
 /pdd-qa               # Find bugs and quality issues
+/pdd-update           # Check for updates and install latest
 ```
 
 ## Acceptance Criteria
@@ -86,9 +89,11 @@ pdd --version
 - [ ] `pdd uninstall` — Remove commands from ~/.claude/commands/
 
 ### AC3: Slash Commands Created (all prefixed with `pdd-`)
+- [ ] `/pdd-help` — Show all PDD commands with descriptions and usage
 - [ ] `/pdd-new [type]` — Create PRD (feature/bugfix/refactor)
 - [ ] `/pdd-init` — Initialize PDD in current project (creates docs/prd/, CLAUDE.md)
 - [ ] `/pdd-status` — Show all PRDs with status
+- [ ] `/pdd-update` — Check for updates and run `npm update -g pdd`
 - [ ] `/pdd-features [prd]` — Audit feature implementation
 - [ ] `/pdd-tests [prd]` — Audit test coverage
 - [ ] `/pdd-alignment` — Check PRD vs code alignment
@@ -149,6 +154,25 @@ This allows `pdd update` to detect outdated commands.
 ```javascript
 const homeDir = os.homedir();
 const claudeCommandsDir = path.join(homeDir, '.claude', 'commands');
+```
+
+### /pdd-update Command
+
+The `/pdd-update` command instructs Claude to:
+1. Check installed version: `cat ~/.claude/commands/pdd-new.md | grep "pdd v"`
+2. Check latest version: `npm view pdd version`
+3. If outdated, run: `npm update -g pdd`
+4. Report what changed
+
+```markdown
+<!-- pdd-update.md -->
+Check for PDD command updates.
+
+1. Read the version from ~/.claude/commands/pdd-new.md (look for <!-- pdd vX.X.X -->)
+2. Run: npm view pdd version
+3. Compare versions
+4. If update available, run: npm update -g pdd
+5. Report the result
 ```
 
 ## Success Metrics
