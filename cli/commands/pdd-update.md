@@ -23,7 +23,7 @@ Look for the version comment: `<!-- pdd vX.X.X -->`
 Query npm for the latest version:
 
 ```bash
-npm view pdd version 2>/dev/null || echo "Package not found"
+npm view prd-driven-dev version 2>/dev/null || echo "Package not found"
 ```
 
 ### Step 3: Compare Versions
@@ -37,7 +37,7 @@ Report the comparison:
 If an update is available:
 
 ```bash
-npm update -g pdd
+npm update -g prd-driven-dev
 ```
 
 Then verify the update:
@@ -55,7 +55,7 @@ If already current:
 > "✅ PDD commands are up to date (vX.X.X)"
 
 If not installed:
-> "⚠️ PDD commands not found. Run: npm install -g pdd"
+> "⚠️ PDD commands not found. Run: npm install -g prd-driven-dev"
 
 ---
 

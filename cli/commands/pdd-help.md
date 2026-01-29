@@ -51,4 +51,4 @@ Write PRD → Implement → Audit → (gaps become new PRDs)
 ## Learn More
 
 - GitHub: https://github.com/mesbahtanvir/prd-driven-dev
-- Update commands: `/pdd-update` or `npm update -g pdd`
+- Update commands: `/pdd-update` or `npm update -g prd-driven-dev`

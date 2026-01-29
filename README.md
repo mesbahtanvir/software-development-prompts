@@ -38,7 +38,7 @@ A methodology for AI-assisted software development where every feature starts wi
 Install PDD commands globally for Claude Code:
 
 ```bash
-npm install -g pdd
+npm install -g prd-driven-dev
 pdd install
 ```
 
@@ -62,7 +62,7 @@ This installs slash commands to `~/.claude/commands/`, making them available in 
 ### Updating
 
 ```bash
-npm update -g pdd
+npm update -g prd-driven-dev
 # or use the slash command:
 /pdd-update
 ```
