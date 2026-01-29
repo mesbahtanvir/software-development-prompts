@@ -69,17 +69,17 @@ Small teams can use PDD effectively with discipline:
 - Frequent communication prevents conflicts
 - Rebase-only workflow keeps everyone in sync
 
-### Challenging: Large Teams
+### Larger Teams
 
-PDD has limitations for larger teams (see below).
+PDD can work for larger teams with workflow adaptations (see below).
 
 ---
 
-## Limitations
+## Considerations for Teams
 
 ### Branch Divergence
 
-PDD works best with linear history. Here's the challenge:
+The default PDD workflow works best with linear history. Here's the challenge:
 
 ```
 main (PRD-001, PRD-002, PRD-003)
@@ -92,12 +92,14 @@ Branch-A doesn't know about PRD-005. Branch-B doesn't know about PRD-004.
 
 If both PRDs affect the same area, you'll have conflicts when merging.
 
-### Not for Parallel Workstreams
+### Parallel Workstreams
 
-If your team has 10 people working on 10 features simultaneously, PDD creates friction:
-- PRD numbers conflict
-- Branches diverge significantly
+With many parallel features, teams may encounter:
+- PRD number conflicts
+- Branch divergence
 - Merge conflicts in PRD files
+
+These aren't limitations of PDD itself—they're workflow considerations. Teams can adapt PDD to their needs with different branching strategies, PRD allocation schemes, or coordination practices.
 
 ---
 
@@ -138,8 +140,8 @@ git rebase origin/main
 | **Problem** | AI agents confused by scattered docs |
 | **Solution** | Sequential, numbered PRDs |
 | **Best for** | Solo devs, small teams |
-| **Limitation** | Branch divergence with parallel work |
-| **Mitigation** | Rebase-only linear branching |
+| **Consideration** | Branch divergence with parallel work |
+| **Adaptation** | Rebase-only branching, or customize to your workflow |
 
 ---
 
