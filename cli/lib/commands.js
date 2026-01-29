@@ -93,29 +93,29 @@ async function update() {
 }
 
 function showVersion() {
-  console.log(`pdd v${VERSION}`);
+  console.log(`pdd-dev v${VERSION}`);
 
   const installedVersion = getInstalledVersion();
   if (installedVersion) {
     console.log(`Installed commands: v${installedVersion}`);
     if (installedVersion !== VERSION) {
-      console.log('\n⚠️  Installed commands are outdated. Run "pdd update" to update.');
+      console.log('\n⚠️  Installed commands are outdated. Run "pdd-dev update" to update.');
     }
   } else {
-    console.log('Commands not installed. Run "pdd install" to install.');
+    console.log('Commands not installed. Run "pdd-dev install" to install.');
   }
 }
 
 function showHelp() {
   console.log(`
-pdd - PRD Driven Development CLI
+pdd-dev - PRD Driven Development CLI
 
 Usage:
-  pdd install     Install PDD commands to ~/.claude/commands/
-  pdd uninstall   Remove PDD commands from ~/.claude/commands/
-  pdd update      Update commands to latest version
-  pdd --version   Show version information
-  pdd --help      Show this help message
+  pdd-dev install     Install PDD commands to ~/.claude/commands/
+  pdd-dev uninstall   Remove PDD commands from ~/.claude/commands/
+  pdd-dev update      Update commands to latest version
+  pdd-dev --version   Show version information
+  pdd-dev --help      Show this help message
 
 After installation, these slash commands are available in Claude Code:
   /pdd-help       Show all PDD commands and usage

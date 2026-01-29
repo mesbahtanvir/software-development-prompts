@@ -43,7 +43,7 @@ npm update -g prd-driven-dev
 Then verify the update:
 
 ```bash
-pdd --version
+pdd-dev --version
 ```
 
 ### Step 5: Report Results

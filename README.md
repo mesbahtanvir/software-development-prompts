@@ -39,7 +39,7 @@ Install PDD commands globally for Claude Code:
 
 ```bash
 npm install -g prd-driven-dev
-pdd install
+pdd-dev install
 ```
 
 This installs slash commands to `~/.claude/commands/`, making them available in all your projects.
