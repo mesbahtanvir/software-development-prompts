@@ -33,6 +33,40 @@ A methodology for AI-assisted software development where every feature starts wi
 | Undocumented decisions | PRD captures context |
 | AI generates wrong thing | PRD guides AI precisely |
 
+## Installation
+
+Install PDD commands globally for Claude Code:
+
+```bash
+npm install -g prd-driven-dev
+pdd-dev install
+```
+
+This installs slash commands to `~/.claude/commands/`, making them available in all your projects.
+
+### Available Commands
+
+| Command | Description |
+|---------|-------------|
+| `/pdd-help` | Show all commands and usage |
+| `/pdd-new [type]` | Create a new PRD (feature/bugfix/refactor) |
+| `/pdd-init` | Initialize PDD in current project |
+| `/pdd-status` | Show PRD dashboard |
+| `/pdd-update` | Check for and install updates |
+| `/pdd-features [prd]` | Audit feature implementation |
+| `/pdd-tests [prd]` | Audit test coverage |
+| `/pdd-alignment` | Check PRD vs code alignment |
+| `/pdd-ux` | Audit UX issues |
+| `/pdd-qa` | Find bugs and quality issues |
+
+### Updating
+
+```bash
+npm update -g prd-driven-dev
+# or use the slash command:
+/pdd-update
+```
+
 ## Prompts
 
 This repository contains prompts to facilitate PDD workflows with AI assistants.
@@ -126,6 +160,11 @@ prd-driven-dev/
 ├── README.md
 ├── CONTRIBUTING.md
 ├── CLAUDE.md               # AI assistant context
+├── cli/                    # npm package (pdd)
+│   ├── package.json
+│   ├── bin/pdd.js          # CLI entry point
+│   ├── lib/commands.js     # Install/update logic
+│   └── commands/           # Slash command templates
 ├── docs/
 │   └── prd/                # PRDs for THIS repo (we dogfood PDD)
 │       ├── PRD-000-foundation.md
