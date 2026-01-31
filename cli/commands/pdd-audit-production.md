@@ -1,5 +1,8 @@
 # Production Readiness Audit
 
+> **DEPRECATED**: This command is deprecated. Use `/pdd-audit ops production` instead.
+> This command will be removed in v3.0.
+
 **Usage:** `/pdd-audit-production`
 
 Comprehensive production readiness check covering feature completion, test coverage, DevOps status, security posture, and staging log analysis. This is the "go/no-go" check before shipping.

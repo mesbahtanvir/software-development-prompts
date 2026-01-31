@@ -1,5 +1,8 @@
 # Find UX Issues
 
+> **DEPRECATED**: This command is deprecated. Use `/pdd-audit ux` instead.
+> This command will be removed in v3.0.
+
 **Usage:** `/pdd-find-ux-issues`
 
 Find user experience problems. Outputs a PRD for UX improvements.

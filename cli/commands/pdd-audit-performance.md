@@ -1,5 +1,8 @@
 # Performance Audit
 
+> **DEPRECATED**: This command is deprecated. Use `/pdd-audit ops performance` instead.
+> This command will be removed in v3.0.
+
 **Usage:** `/pdd-audit-performance`
 
 Audit code for performance issues and optimization opportunities. Detects N+1 queries, missing pagination, memory leaks, bundle bloat, and inefficient patterns. Outputs a report with recommendations.

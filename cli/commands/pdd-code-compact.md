@@ -1,5 +1,8 @@
 # Clean Code Audit
 
+> **DEPRECATED**: This command is deprecated. Use `/pdd-audit quality` instead.
+> This command will be removed in v3.0.
+
 **Usage:** `/pdd-code-compact`
 
 Audit code quality against Uncle Bob's Clean Code principles. Analyzes naming, functions, comments, formatting, error handling, and SOLID principles. Outputs a PRD for refactoring improvements.

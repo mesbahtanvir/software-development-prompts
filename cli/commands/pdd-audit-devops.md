@@ -1,5 +1,8 @@
 # DevOps Audit
 
+> **DEPRECATED**: This command is deprecated. Use `/pdd-audit ops devops` instead.
+> This command will be removed in v3.0.
+
 **Usage:** `/pdd-audit-devops`
 
 Analyze deployment code, CI/CD configurations, infrastructure as code, and Firebase workflows. Outputs an audit report with issues and recommendations.

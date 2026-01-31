@@ -1,5 +1,8 @@
 # List PRDs
 
+> **DEPRECATED**: This command is deprecated. Use `/pdd-prd list` instead.
+> This command will be removed in v3.0.
+
 **Usage:** `/pdd-prd-list`
 
 Show the status of all PRDs in the current project.

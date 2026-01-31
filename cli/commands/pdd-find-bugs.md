@@ -1,5 +1,8 @@
 # Find Bugs
 
+> **DEPRECATED**: This command is deprecated. Use `/pdd-audit quality` instead.
+> This command will be removed in v3.0.
+
 **Usage:** `/pdd-find-bugs`
 
 Find bugs, quality issues, and reliability problems. Outputs a PRD for fixes.

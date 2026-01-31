@@ -1,5 +1,8 @@
 # Find PRD Drift
 
+> **DEPRECATED**: This command is deprecated. Use `/pdd-audit drift` instead.
+> This command will be removed in v3.0.
+
 **Usage:** `/pdd-find-drift`
 
 Find where code has drifted from PRD specifications. Outputs a PRD for misalignments.

@@ -1,5 +1,8 @@
 # Find Untested Code
 
+> **DEPRECATED**: This command is deprecated. Use `/pdd-audit tests [prd-number]` instead.
+> This command will be removed in v3.0.
+
 **Usage:** `/pdd-find-untested [prd-number]`
 
 Find code without test coverage. Outputs a PRD for missing tests.

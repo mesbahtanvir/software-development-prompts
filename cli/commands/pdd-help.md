@@ -2,44 +2,47 @@
 
 Display all available PRD Driven Development commands and their usage.
 
-## Available Commands
+## Primary Commands
 
 ### PRD Management
+
 | Command | Usage | Description |
 |---------|-------|-------------|
-| `/pdd-prd-create` | `/pdd-prd-create [type]` | Create a new PRD (feature/bugfix/refactor) |
-| `/pdd-prd-list` | `/pdd-prd-list` | List all PRDs and their status |
+| `/pdd-prd` | `/pdd-prd <subcommand>` | Manage PRDs (create, list) |
 
-### Find Gaps (each outputs a PRD)
+**Subcommands:**
+
+- `/pdd-prd create [type]` - Create a new PRD (feature/bugfix/refactor)
+- `/pdd-prd list` - List all PRDs and their status
+
+### Audit Suite
+
 | Command | Usage | Description |
 |---------|-------|-------------|
-| `/pdd-find-unimplemented` | `/pdd-find-unimplemented [prd]` | Find PRD features not implemented |
-| `/pdd-find-untested` | `/pdd-find-untested [prd]` | Find code without tests |
-| `/pdd-find-drift` | `/pdd-find-drift` | Find code that doesn't match PRD |
-| `/pdd-find-ux-issues` | `/pdd-find-ux-issues` | Find UX problems |
-| `/pdd-find-bugs` | `/pdd-find-bugs` | Find bugs and quality issues |
+| `/pdd-audit` | `/pdd-audit <subcommand>` | Run PRD-driven audits |
 
-### Operations Audits (each outputs a report)
-| Command | Usage | Description |
-|---------|-------|-------------|
-| `/pdd-audit-devops` | `/pdd-audit-devops` | Audit deployment, CI/CD, and infrastructure |
-| `/pdd-audit-security` | `/pdd-audit-security` | Audit security vulnerabilities and risks |
-| `/pdd-audit-production` | `/pdd-audit-production` | Full production readiness check |
-| `/pdd-audit-all` | `/pdd-audit-all` | Run all three audits in sequence |
+**Subcommands:**
 
-### Code Quality
-| Command | Usage | Description |
-|---------|-------|-------------|
-| `/pdd-code-compact` | `/pdd-code-compact` | Audit code against Clean Code principles |
+- `/pdd-audit features [prd]` - Find unimplemented PRD features
+- `/pdd-audit tests [prd]` - Find test gaps (logical reasoning from PRDs)
+- `/pdd-audit drift` - Detect code drift from specifications
+- `/pdd-audit ux` - Find UX issues vs PRD-defined experiences
+- `/pdd-audit quality` - Find bugs and code quality issues
+- `/pdd-audit ops [focus]` - Security, performance, devops audit
+- `/pdd-audit all` - Run all audits in sequence
 
-### Quality Audits (each outputs a report)
+> **Note:** All audits start with Phase 0 (Build PRD Context) to understand your project's desired state from all PRDs.
+
+### Quality Audits
+
 | Command | Usage | Description |
 |---------|-------|-------------|
 | `/pdd-audit-docs` | `/pdd-audit-docs` | Audit documentation completeness |
 | `/pdd-audit-architecture` | `/pdd-audit-architecture` | Audit structural health and dependencies |
-| `/pdd-audit-performance` | `/pdd-audit-performance` | Audit performance issues and optimizations |
+| `/pdd-audit-e2e` | `/pdd-audit-e2e` | Audit E2E test coverage |
 
 ### Tooling
+
 | Command | Usage | Description |
 |---------|-------|-------------|
 | `/pdd-help` | `/pdd-help` | Show this help message |
@@ -49,33 +52,58 @@ Display all available PRD Driven Development commands and their usage.
 ## Quick Start
 
 1. **Initialize PDD in your project:**
-   ```
+
+   ```text
    /pdd-init
    ```
 
-2. **Create your first PRD:**
-   ```
-   /pdd-prd-create feature
+1. **Create your first PRD:**
+
+   ```text
+   /pdd-prd create feature
    ```
 
-3. **List PRD status:**
-   ```
-   /pdd-prd-list
+1. **List PRD status:**
+
+   ```text
+   /pdd-prd list
    ```
 
-4. **Find gaps (outputs a PRD for each):**
-   ```
-   /pdd-find-unimplemented 001
-   /pdd-find-bugs
+1. **Run audits:**
+
+   ```text
+   /pdd-audit features
+   /pdd-audit quality
+   /pdd-audit all
    ```
 
 ## The PDD Cycle
 
-```
-Write PRD → Implement → Find Gaps → (gaps become new PRDs)
+```text
+Write PRD → Implement → Audit → (gaps become new PRDs)
 ```
 
 **Core Principle:** No PRD, No Code.
+
+## Deprecated Commands
+
+The following commands are deprecated and will be removed in v3.0:
+
+| Old Command | Use Instead |
+|-------------|-------------|
+| `/pdd-prd-create` | `/pdd-prd create` |
+| `/pdd-prd-list` | `/pdd-prd list` |
+| `/pdd-find-unimplemented` | `/pdd-audit features` |
+| `/pdd-find-untested` | `/pdd-audit tests` |
+| `/pdd-find-drift` | `/pdd-audit drift` |
+| `/pdd-find-ux-issues` | `/pdd-audit ux` |
+| `/pdd-find-bugs` | `/pdd-audit quality` |
+| `/pdd-code-compact` | `/pdd-audit quality` |
+| `/pdd-audit-security` | `/pdd-audit ops security` |
+| `/pdd-audit-performance` | `/pdd-audit ops performance` |
+| `/pdd-audit-devops` | `/pdd-audit ops devops` |
+| `/pdd-audit-production` | `/pdd-audit ops production` |
+| `/pdd-audit-all` | `/pdd-audit all` |
 
 ## Learn More
 

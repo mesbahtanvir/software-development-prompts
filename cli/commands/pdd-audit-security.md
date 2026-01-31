@@ -1,5 +1,8 @@
 # Security Audit
 
+> **DEPRECATED**: This command is deprecated. Use `/pdd-audit ops security` instead.
+> This command will be removed in v3.0.
+
 **Usage:** `/pdd-audit-security`
 
 Analyze code for security vulnerabilities including dependency CVEs, injection attacks, secrets exposure, token leakage, DDoS vulnerabilities, and data leakage risks. Outputs an audit report with issues and recommendations.

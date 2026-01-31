@@ -1,5 +1,8 @@
 # Find Unimplemented PRD Features
 
+> **DEPRECATED**: This command is deprecated. Use `/pdd-audit features [prd-number]` instead.
+> This command will be removed in v3.0.
+
 **Usage:** `/pdd-find-unimplemented [prd-number]`
 
 Find PRD features that are not yet implemented in code. Outputs a PRD for gaps found.

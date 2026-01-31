@@ -1,5 +1,8 @@
 # Full Operations Audit
 
+> **DEPRECATED**: This command is deprecated. Use `/pdd-audit all` instead.
+> This command will be removed in v3.0.
+
 **Usage:** `/pdd-audit-all`
 
 Run all three audits in sequence: DevOps, Security, and Production Readiness. Generates a comprehensive combined report.
